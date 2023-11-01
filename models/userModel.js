@@ -34,6 +34,10 @@ const UserSchema = new mongoose.Schema({
     },
     auth_token:{
         type: String,
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 }, { timestamps: true } );
 

@@ -3,6 +3,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/db');
 
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const apiRouter = require('./routes/api');
+
+
 const app = express();
 const cors = require('cors');
 
@@ -13,6 +18,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/index', indexRouter);
+app.use('/', apiRouter);
+app.use('/users', usersRouter);
 
 app.use(function(err, req, res, next) {
     // set locals, only providing error in development
